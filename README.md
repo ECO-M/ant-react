@@ -1,6 +1,6 @@
 react后台管理系统 MVVM框架
 ## 前端
-Create-React-App UI(Ant Design)
+Create-React-App(react全家桶) UI(Ant Design)
 ## 服务端
 Node.js(express.js)
 ## 数据库
