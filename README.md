@@ -1,3 +1,7 @@
+sso后台管理系统 MVVM框架
+前端 Create-React-App UI(Ant Design)
+后台 Node.js(express.js)
+数据库 mongodb(mongoose)
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
