@@ -1,0 +1,85 @@
+.table_flex {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.table_context {
+    padding: 0 10px 5px 15px;
+    width: 100%;
+}
+
+.table_form {
+    border: 1px solid #e8e8e8;
+}
+
+.table_context .table_form {
+    background-color: #fff;
+}
+
+.table-vh > ul {
+    height: 100%;
+    min-height: 100vh;
+    padding-top: 10px;
+}
+
+.table-vh .ant-menu-item > a {
+    display: inline-block;
+}
+
+.card_mode {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.card_mode .ant-card {
+    width: 240px;
+    margin-left: 15px;
+}
+
+.card_mode .ant-card:first-child {
+    margin-left: 0;
+}
+
+.ant-card-cover img {
+    height: 220px;
+}
+
+.ant-card-body {
+    padding: 18px;
+    text-align: center;
+}
+
+.card_height {
+    height: 300px;
+}
+
+.ant-card-meta {
+    margin: 0;
+    margin-top: 5px;
+}
+
+.ant-card:hover .ant-card-meta .ant-card-meta-description {
+    color: #1890ff;
+}
+/*pagination*/
+.ant-table-pagination.ant-pagination {
+    margin: 16px 20px 16px 0;
+}
+
+/*table*/
+.curr_span {
+    cursor: pointer;
+}
+
+.span_button {
+    color: rgba(67, 146, 247, 1.000);
+}
+
+div[disabled] {
+    color: rgba(0, 0, 0, 0.25);
+    cursor: not-allowed;
+    pointer-events: none;
+}
