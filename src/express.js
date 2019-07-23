@@ -13,6 +13,7 @@ const databaseConnect = require('../src/mongodb/databaseConnect');
 const Login = databaseConnect.Login;
 //home
 const home = databaseConnect.home;
+//user
 
 //开发的时候使用的
 api.use("*", function (req, res, next) {
