@@ -1,4 +1,4 @@
-sso后台管理系统 MVVM框架
+react后台管理系统 MVVM框架
 ## 前端
 Create-React-App UI(Ant Design)
 ## 服务端
