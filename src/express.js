@@ -48,7 +48,7 @@ api.use("/*", (req, res, next) => {
  */
 api.post('/login', jsonParser, (req, res) => {
   //查询
-  //前端返回的密码s
+  //前端返回的密码
   //code => token
   let code, password = req.body.password;
   Login.find({username: req.body.username}, (err, doc) => {
