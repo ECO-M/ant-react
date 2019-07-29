@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 /**
  * databaseConnect.js
  * module.exports
- * {Login}
+ * {Login home}
  */
 const databaseConnect = require('../src/mongodb/databaseConnect');
 //login
@@ -41,7 +41,7 @@ api.use("/*", (req, res, next) => {
     let token = req.headers.authorization; // 从Authorization中获取token
     let secretOrPrivateKey = "jwt"; // 这是加密的key（密钥）
     jwt.verify(token, secretOrPrivateKey, (err, decode) => {
-      err ? res.send(10010, {msg: '请重新登陆'}) : next();
+      err ? res.status(10010, {msg: '请重新登陆'}) : next();
     });
   }
 });
@@ -49,7 +49,7 @@ api.use("/*", (req, res, next) => {
 /**
  * @connector login
  */
-api.post('/login', jsonParser, (req, res) => {
+api.post('/login', (req, res) => {
   //查询
   //前端返回的密码
   //code => token
@@ -78,17 +78,19 @@ api.post('/login', jsonParser, (req, res) => {
 });
 
 api.post('/home', (req, res) => {
-  console.log(req.body.page);
-  console.log(req.body.size);
-  res.json("1111");
-  // console.log(res);
-  // home.find({}).exec((err, doc) => {
-  //   if (err) {
-  //     console.log('查询失败');
-  //   } else {
-  //     res.json({status: 200, msg: '', data: doc});
-  //   }
-  // })
+  let currentPage = req.body.page,
+    limit = req.body.size;
+  console.log(limit);
+  if (currentPage && limit) {
+    home.find({}, (err, res) => {
+      if (err) return res.json({status: 101, message: '请求失败!'});
+      let all = res.length;
+      console.log(res);
+      console.log(all);
+    })
+  } else {
+    return res.json({status: 101, message: '请求参数错误!'});
+  }
 });
 
 api.listen(8081);
