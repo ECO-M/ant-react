@@ -15,6 +15,12 @@ const Login = databaseConnect.Login;
 const home = databaseConnect.home;
 //user
 
+//bodyParser 请求解析中间价 json数据格式
+api.use(bodyParser.json());
+// 创建 application/x-www-form-urlencoded 编码解析
+//传输的内容不是string类型 extended:true
+api.use(bodyParser.urlencoded({extended: true}));
+
 //开发的时候使用的
 api.use("*", function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -26,9 +32,6 @@ api.use("*", function (req, res, next) {
     next()
   }
 });
-
-let jsonParser = bodyParser.json();
-// let urlencodedParser = bodyParser.urlencoded({extended: false});
 
 api.use("/*", (req, res, next) => {
   let login = req.baseUrl.replace('/', "");
@@ -74,14 +77,18 @@ api.post('/login', jsonParser, (req, res) => {
   });
 });
 
-api.get('/home', (req, res) => {
-  home.find({}).exec((err, doc) => {
-    if (err) {
-      console.log('查询失败');
-    } else {
-      res.json({status: 200, msg: '', data: doc});
-    }
-  })
+api.post('/home', (req, res) => {
+  console.log(req.body.page);
+  console.log(req.body.size);
+  res.json("1111");
+  // console.log(res);
+  // home.find({}).exec((err, doc) => {
+  //   if (err) {
+  //     console.log('查询失败');
+  //   } else {
+  //     res.json({status: 200, msg: '', data: doc});
+  //   }
+  // })
 });
 
 api.listen(8081);
