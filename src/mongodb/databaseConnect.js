@@ -28,7 +28,6 @@ let loginSchema = new Schema({
 /**
  * home 首页
  * array []
- * homeId:String
  * src:String
  * title:String
  * url:String
