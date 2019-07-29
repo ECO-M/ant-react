@@ -85,13 +85,13 @@ api.post('/login', (req, res) => {
  *  size 条数
  */
 api.post('/home', (req, res) => {
-  let currentPage = req.body.page,
-    limit = req.body.size;
-  if (currentPage && limit) {
+  let page = req.body.page,
+    size = req.body.size;
+  if (page && size) {
     home.find({}, (err, doc) => {
       if (err) return res.json({status: 101, message: '请求失败!'});
       let all = doc.length;
-      home.find({}).skip((currentPage - 1) * limit).limit(limit).exec((err, docs) => {
+      home.find({}).skip((page - 1) * size).limit(size).exec((err, docs) => {
         if (err) {
           return res.json({status: 101, message: '请求失败!'});
         } else {

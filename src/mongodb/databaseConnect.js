@@ -3,6 +3,8 @@
  * @type {*|Mongoose}
  */
 const mongoose = require('mongoose');
+//生成id
+const id = mongoose.Types.ObjectId;
 //数据库地址
 const DB_URL = 'mongodb://localhost:27017/oos';
 // 链接数据库
@@ -33,7 +35,6 @@ let loginSchema = new Schema({
  */
 
 let homeSchema = new Schema({
-  homeId: {type: String},
   src: {type: String},
   title: {type: String},
   url: {type: String}

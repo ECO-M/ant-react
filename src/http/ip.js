@@ -14,7 +14,7 @@ let baseUrl, imgUrl;
  */
 if (process.env.NODE_ENV === 'development') {
   //本地服务器 开发环境ip地址
-  baseUrl = "http://10.10.0.201:8081";
+  baseUrl = "http://192.168.2.186:8081";
   // baseUrl = "http://192.168.2.186:8081";
   imgUrl = "";
 } else {
