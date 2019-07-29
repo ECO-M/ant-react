@@ -82,12 +82,12 @@ api.post('/home', (req, res) => {
     limit = req.body.size;
   console.log(limit);
   if (currentPage && limit) {
-    home.find({}, (err, res) => {
+    home.find({}, (err, doc) => {
       if (err) return res.json({status: 101, message: '请求失败!'});
-      let all = res.length;
-      console.log(res);
-      console.log(all);
-    })
+        let all = doc.length;
+        // console.log(doc);
+        res.json({data:doc});
+    });
   } else {
     return res.json({status: 101, message: '请求参数错误!'});
   }

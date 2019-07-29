@@ -15,7 +15,7 @@ class Layout extends Component {
   
   render() {
     if (localStorage.getItem('token')) {
-      console.log(this.props);
+      // console.log(this.props);
     } else {
       alert('请先去登陆!');
       this.props.history.push('/');
