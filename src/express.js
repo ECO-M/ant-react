@@ -77,16 +77,27 @@ api.post('/login', (req, res) => {
   });
 });
 
+/**
+ *  @connector home
+ *  @search 搜索
+ *  @paging 分页
+ *  page 页数
+ *  size 条数
+ */
 api.post('/home', (req, res) => {
   let currentPage = req.body.page,
     limit = req.body.size;
-  console.log(limit);
   if (currentPage && limit) {
     home.find({}, (err, doc) => {
       if (err) return res.json({status: 101, message: '请求失败!'});
-        let all = doc.length;
-        // console.log(doc);
-        res.json({data:doc});
+      let all = doc.length;
+      home.find({}).skip((currentPage - 1) * limit).limit(limit).exec((err, docs) => {
+        if (err) {
+          return res.json({status: 101, message: '请求失败!'});
+        } else {
+          return res.json({status: 200, message: '请求成功!', total: all, data: docs});
+        }
+      });
     });
   } else {
     return res.json({status: 101, message: '请求参数错误!'});
