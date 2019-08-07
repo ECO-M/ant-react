@@ -17,7 +17,7 @@ const home = databaseConnect.home;
 
 //bodyParser 请求解析中间价 json数据格式
 api.use(bodyParser.json());
-// 创建 application/x-www-form-urlencoded 编码解析
+//创建 application/x-www-form-urlencoded 编码解析
 //传输的内容不是string类型 extended:true
 api.use(bodyParser.urlencoded({extended: true}));
 

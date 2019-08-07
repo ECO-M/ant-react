@@ -7,7 +7,7 @@ const {Meta} = Card;
 
 const Cards = (props) => {
   const card = props.posts.map((post) =>
-    <Card className="card_height" key={post.homeId} hoverable cover={<img alt="example" src={post.src}/>}>
+    <Card className="card_height" key={post._id} hoverable cover={<img alt="example" src={post.src}/>}>
       <div>
         <ul>
           <li>{post.title}</li>
@@ -34,13 +34,20 @@ class home extends Component {
   }
   
   componentDidMount() {
-    http('/home', 'get').then(res => {
-      if (res.status === 200) {
-        console.log(res);
-        this.setState({
-          data: res.data
-        })
-      }
+    this.getTable();
+  }
+  
+  getTable(page, size) {
+    let json = {
+      page: 1,
+      size: 10,
+    };
+    http('/home', 'post', json).then(res => {
+        if (res.status === 200) {
+          this.setState({
+            data: res.data
+          })
+        }
     }).catch(err => {
       console.log(err);
     })
