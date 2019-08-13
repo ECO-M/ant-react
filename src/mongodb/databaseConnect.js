@@ -1,14 +1,36 @@
 /**
- *  Mongoose plug-in
- * @type {*|Mongoose}
+ * Mongoose plug-in
+ * @type {Mongoose}
  */
 const mongoose = require('mongoose');
 //数据库地址
 const DB_URL = 'mongodb://localhost:27017/oos';
 // 链接数据库
-mongoose.connect(DB_URL, {useNewUrlParser: true});
+mongoose.connect(DB_URL, {useNewUrlParser: true, useCreateIndex: true});
 
-//Mongoose里，一切都始于Schema
+/**
+ * db 数据库连接状态
+ * error 错误
+ * open 成功
+ * disconnected 连接断开
+ */
+let db = mongoose.connection;
+db.on('error', (err) => {
+  console.log('数据库连接出错', err);
+});
+
+db.on('open', () => {
+  console.log('数据库连接成功');
+});
+
+db.on('disconnected', () => {
+  console.log('数据库断开连接');
+});
+
+/**
+ * 声明 Schema
+ * Mongoose里，一切都始于Schema
+ */
 const Schema = mongoose.Schema;
 
 //设计文档结构
